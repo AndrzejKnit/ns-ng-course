@@ -1,5 +1,5 @@
 <StackLayout>
-    <Label text="Take a walk every day">
-
-    </Label>
+    <TextField hint="Challenge title" [(ngModel)]="challengeDescription"></TextField>
+    <Button text="Set Challenge" (tap)="onSetChallenge()"></Button>
+    <Label [text]="currentChallenge"></Label>
 </StackLayout>
