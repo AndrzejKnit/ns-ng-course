@@ -8,6 +8,7 @@ import { StackComponent } from './layouts/stack/stack.component';
 import { FlexboxComponent } from './layouts/flexbox/flexbox.component';
 import { GridComponent } from './layouts/grid/grid.component';
 import { GridAssignmentComponent } from './grid-assignment/grid-assignment.component';
+import { AbsoluteComponent } from './layouts/absolute/absolute.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -29,7 +30,8 @@ import { GridAssignmentComponent } from './grid-assignment/grid-assignment.compo
         StackComponent,
         FlexboxComponent,
         GridComponent,
-        GridAssignmentComponent
+        GridAssignmentComponent,
+        AbsoluteComponent
     ],
     providers: [],
     schemas: [
