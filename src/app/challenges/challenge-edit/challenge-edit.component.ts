@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'ns-challenge-edit',
@@ -7,10 +7,12 @@ import { Component } from '@angular/core';
   moduleId: module.id,
 })
 export class ChallengeEditComponent {
+   @Output() input = new EventEmitter<string>();
     challengeDescription = '';
 
     onSetChallenge() {
        // this.currentChallenge = this.challengeDescription;
+       this.input.emit(this.challengeDescription);
     }
 
 }
