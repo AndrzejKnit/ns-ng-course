@@ -7,6 +7,7 @@ import { CurrentChallengeComponent } from "./challenges/current-challenge/curren
 import { StackComponent } from './layouts/stack/stack.component';
 import { FlexboxComponent } from './layouts/flexbox/flexbox.component';
 import { GridComponent } from './layouts/grid/grid.component';
+import { GridAssignmentComponent } from './grid-assignment/grid-assignment.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -27,7 +28,8 @@ import { GridComponent } from './layouts/grid/grid.component';
         CurrentChallengeComponent,
         StackComponent,
         FlexboxComponent,
-        GridComponent
+        GridComponent,
+        GridAssignmentComponent
     ],
     providers: [],
     schemas: [

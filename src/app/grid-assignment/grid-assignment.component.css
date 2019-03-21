@@ -1,15 +1,9 @@
 /* Add mobile styles for the component here.  */
-/* Add mobile styles for the component here.  */
-/* Add mobile styles for the component here.  */
 GridLayout {
     border-color: green;
-    border-width: 2;
+    border-width: 5;
 }
 
-Label {
-    /* height: 50;
-    width: 50; */
-}
 
 #i1 {
 background: red;
@@ -20,3 +14,10 @@ background: blue;
 #i3 {
 background: orange;
 }
+#i4 {
+    background: pink;
+        }
+    #i5 {
+    background: green;
+        }
+
