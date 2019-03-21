@@ -1,1 +1,7 @@
-
+.title {
+    color: blueviolet;
+    font-size: 26;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10
+}
