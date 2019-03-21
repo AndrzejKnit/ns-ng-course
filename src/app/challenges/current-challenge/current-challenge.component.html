@@ -1,10 +1,10 @@
-<ScrollView>
-<StackLayout>
-    <Label
-        class="title"
-        [text]="challenge"
-        horizontalAlignment="center"
-        *ngFor="let challenge of challenges">
-    </Label>
-</StackLayout>
-</ScrollView>
+<ListView [items]="challenges" (itemTap)="onItemTap($event)">
+    <ng-template>
+        <GridLayout rows="40,auto" columns="50,*">
+            <Label text="Item" row="0" col="0" rowSpan="2"></Label>
+            <Label text="Item content" row="0" col="1"></Label>
+            <Label text="Item content row 1" row="1" col="1"></Label>
+        </GridLayout>
+    </ng-template>
+</ListView>
+
