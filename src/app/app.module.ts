@@ -10,6 +10,8 @@ import { GridComponent } from './layouts/grid/grid.component';
 import { GridAssignmentComponent } from './grid-assignment/grid-assignment.component';
 import { AbsoluteComponent } from './layouts/absolute/absolute.component';
 import { ChallengeEditComponent } from './challenges/challenge-edit/challenge-edit.component';
+import { AuthComponent } from './auth/auth.component';
+import { TodayComponent } from './challenges/today/today.component';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -33,7 +35,9 @@ import { ChallengeEditComponent } from './challenges/challenge-edit/challenge-ed
         GridComponent,
         GridAssignmentComponent,
         AbsoluteComponent,
-        ChallengeEditComponent
+        ChallengeEditComponent,
+        AuthComponent,
+        TodayComponent
     ],
     providers: [],
     schemas: [
