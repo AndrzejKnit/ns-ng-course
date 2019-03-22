@@ -4,14 +4,10 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
 import { AppComponent } from "./app.component";
 import { CurrentChallengeComponent } from "./challenges/current-challenge/current-challenge.component";
-import { StackComponent } from './layouts/stack/stack.component';
-import { FlexboxComponent } from './layouts/flexbox/flexbox.component';
-import { GridComponent } from './layouts/grid/grid.component';
-import { GridAssignmentComponent } from './grid-assignment/grid-assignment.component';
-import { AbsoluteComponent } from './layouts/absolute/absolute.component';
 import { ChallengeEditComponent } from './challenges/challenge-edit/challenge-edit.component';
 import { AuthComponent } from './auth/auth.component';
 import { TodayComponent } from './challenges/today/today.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -25,16 +21,13 @@ import { TodayComponent } from './challenges/today/today.component';
         AppComponent
     ],
     imports: [
-        NativeScriptModule, NativeScriptFormsModule
+        NativeScriptModule,
+        NativeScriptFormsModule,
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
         CurrentChallengeComponent,
-        StackComponent,
-        FlexboxComponent,
-        GridComponent,
-        GridAssignmentComponent,
-        AbsoluteComponent,
         ChallengeEditComponent,
         AuthComponent,
         TodayComponent
