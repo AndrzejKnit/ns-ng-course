@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'ns-today',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodayComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: RouterExtensions ) { }
 
   ngOnInit() {
   }
 
+  onCurrentChallenge() {
+    this.router.navigate(['/current-challenge']);
+  }
 }
