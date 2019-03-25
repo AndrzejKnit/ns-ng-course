@@ -1,11 +1,13 @@
-<ActionBar title="Current Challange" (loaded)="onLoadedActionBar()">
-    <NavigationButton
-    text="Back"
-    android.systemIcon="ic_menu_back">
-</NavigationButton>
-</ActionBar>
+<ns-action-bar title="Current challenge"></ns-action-bar>
 <StackLayout>
-    <Label text="The current challenge" horizontalAlignment="center" class="title"></Label>
-    <Button text="Edit"  (tap)="onChallengeEdit()"></Button>
+<Label
+    text="The current challenge"
+    horizontalAlignment="center"
+    class="title">
+</Label>
+<Button
+    text="Edit"
+    (tap)="onChallengeEdit()">
+</Button>
 </StackLayout>
 

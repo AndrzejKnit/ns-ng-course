@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { RouterExtensions } from 'nativescript-angular/router';
-import { isAndroid  } from 'tns-core-modules/platform';
+
 import { Page } from "tns-core-modules/ui/page/page";
 
 declare var android: any;
@@ -13,20 +13,11 @@ declare var android: any;
 })
 export class CurrentChallengeComponent {
 
-    constructor(private router: RouterExtensions, private page: Page ) { }
+    constructor(private router: RouterExtensions) { }
 
     onChallengeEdit() {
         this.router.navigate(['/challenge-edit']);
     }
 
-    onLoadedActionBar() {
-        if (isAndroid) {
-           const androidToolbar =  this.page.actionBar.nativeView;
-           const backButton = androidToolbar.getNavigationIcon();
-           if (backButton) {
-               backButton.setColorFilter(android.graphics.Color.parseColor('#171717'),
-               (<any>android.graphics).PorterDuff.Mode.SRC_ATOP);
-           }
-        }
-    }
+
 }
