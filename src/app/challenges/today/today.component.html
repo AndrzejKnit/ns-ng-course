@@ -1,8 +1,12 @@
-<ns-action-bar title="Today's challenges"></ns-action-bar>
+<ns-action-bar
+    title="Today's challenges"
+    [showBackButton]="false">
+</ns-action-bar>
 <StackLayout>
     <Label text="Today!"></Label>
     <Button text="today works!"
         class="btn btn-primary"
-        (tap)="onCurrentChallenge()">
+        (tap)="onCurrentChallenge()"
+        pageTransition="slideLeft">
     </Button>
 </StackLayout>
