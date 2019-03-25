@@ -5,8 +5,8 @@
         *ngIf="canGoBack"
         (tap)="onGoBack()">
     </NavigationButton>
-    <NavigationButton icon="res://menu_black"></NavigationButton>
-    <ActionItem ios.position="left">
+    <NavigationButton *ngIf="android" icon="res://menu_black"></NavigationButton>
+    <ActionItem *ngIf="!android" ios.position="left">
         <Label text="Menu"></Label>
     </ActionItem>
 </ActionBar>
