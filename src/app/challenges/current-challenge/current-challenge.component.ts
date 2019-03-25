@@ -1,5 +1,9 @@
 import { Component } from "@angular/core";
 import { RouterExtensions } from 'nativescript-angular/router';
+import { isAndroid  } from 'tns-core-modules/platform';
+import { Page } from "tns-core-modules/ui/page/page";
+
+declare var android: any;
 
 @Component({
     selector: 'ns-current-challenge',
@@ -9,9 +13,20 @@ import { RouterExtensions } from 'nativescript-angular/router';
 })
 export class CurrentChallengeComponent {
 
-    constructor(private router: RouterExtensions ) { }
+    constructor(private router: RouterExtensions, private page: Page ) { }
 
     onChallengeEdit() {
         this.router.navigate(['/challenge-edit']);
+    }
+
+    onLoadedActionBar() {
+        if (isAndroid) {
+           const androidToolbar =  this.page.actionBar.nativeView;
+           const backButton = androidToolbar.getNavigationIcon();
+           if (backButton) {
+               backButton.setColorFilter(android.graphics.Color.parseColor('#171717'),
+               (<any>android.graphics).PorterDuff.Mode.SRC_ATOP);
+           }
+        }
     }
 }
