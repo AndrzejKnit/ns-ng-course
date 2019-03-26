@@ -30,3 +30,13 @@ refer to http://docs.nativescript.org/ui/theme.
     text-transform: uppercase;
     padding: 8 4;
 }
+
+.drawer-container {
+    background: linear-gradient(140deg, #2b0c72, #5c3fa0);
+    width: 80%;
+    horizontal-align: left;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20;
+}
