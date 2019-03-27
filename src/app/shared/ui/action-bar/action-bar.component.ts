@@ -17,6 +17,7 @@ export class ActionBarComponent implements OnInit {
     @Input() showBackButton = true;
     @Input() hasMenu = true;
 
+
   constructor(
       private page: Page,
       private router: RouterExtensions,
