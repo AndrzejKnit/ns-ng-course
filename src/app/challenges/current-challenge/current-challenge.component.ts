@@ -1,7 +1,6 @@
-import { Component } from "@angular/core";
-import { RouterExtensions } from 'nativescript-angular/router';
-
-import { Page } from "tns-core-modules/ui/page/page";
+import { Component, ViewContainerRef } from "@angular/core";
+import { ModalDialogService } from 'nativescript-angular/modal-dialog';
+import { DayModalComponent } from "../day-modal/day-modal.component";
 
 declare var android: any;
 
@@ -13,10 +12,13 @@ declare var android: any;
 })
 export class CurrentChallengeComponent {
 
-    constructor(private router: RouterExtensions) { }
+    constructor(private modalDialog: ModalDialogService, private vcRef: ViewContainerRef) { }
 
-    onChallengeEdit() {
-        this.router.navigate(['/challenges/edit'], {transition: {name: 'slideLeft'}});
+    onChangeStatus() {
+        this.modalDialog.showModal(DayModalComponent, {
+            fullscreen: true,
+            viewContainerRef: this.vcRef
+        });
     }
 
 
