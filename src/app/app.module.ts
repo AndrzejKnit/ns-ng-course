@@ -33,9 +33,7 @@ import { SharedModule } from "./shared/shared.module";
         DayModalComponent
     ],
     providers: [],
-    schemas: [
-        NO_ERRORS_SCHEMA
-    ],
+    schemas: [NO_ERRORS_SCHEMA],
     entryComponents: [DayModalComponent]
 })
 /*
