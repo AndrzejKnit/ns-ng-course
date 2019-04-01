@@ -1,0 +1,29 @@
+@import '~nativescript-theme-core/css/core.light.css';
+
+.form-control {
+    border-bottom-color: purple;
+    border-bottom-width: 3;
+    margin: 5 0;
+    font-size: 20;
+    text-transform: uppercase;
+    padding: 8 4;
+}
+
+.drawer-container {
+    background: linear-gradient(140deg, #2b0c72, #5c3fa0);
+    width: 80%;
+    horizontal-align: left;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20;
+}
+
+.btn {
+    border-width: 1;
+    border-color: purple;
+    width: 100%;
+    padding: 5 10;
+    border-radius: 30%;
+    margin: 5 0;
+ }
