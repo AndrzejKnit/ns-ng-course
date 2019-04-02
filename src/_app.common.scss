@@ -1,6 +1,18 @@
-@import '~nativescript-theme-core/css/core.light.css';
+// Place any CSS rules you want to apply on both iOS and Android here.
+// This is where the vast majority of your CSS code goes.
+/*
+@import '~nativescript-theme-core/scss/light';
 
-.form-control {
+$primary: yellow;
+$secondary: yellow;
+$disabled: #ccc;
+
+$btn-color: $primary;
+
+
+@import '~nativescript-theme-core/scss/index'; */
+
+/* .form-control {
     border-bottom-color: purple;
     border-bottom-width: 3;
     margin: 5 0;
@@ -17,9 +29,9 @@
     justify-content: center;
     align-items: center;
     padding: 20;
-}
+} */
 
-.btn {
+/* .btn {
     border-width: 1;
     border-color: purple;
     width: 100%;
@@ -27,3 +39,4 @@
     border-radius: 30%;
     margin: 5 0;
  }
+ */

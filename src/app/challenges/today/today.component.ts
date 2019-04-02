@@ -17,4 +17,5 @@ export class TodayComponent implements OnInit {
   onCurrentChallenge() {
     this.router.navigate(['/current-challenge'], {transition: {name:'slideLeft'}});
   }
+
 }
