@@ -2,8 +2,8 @@
 // other than “light”, switch the path to the alternative scheme,
 // for example '~nativescript-theme-core/scss/dark'.
 @import '~nativescript-theme-core/scss/light';
-
+@import './theme/colors';
 // Customize any of the theme’s variables here, for instance
 
-$primary: purple;
+
 $btn-color: $primary;
