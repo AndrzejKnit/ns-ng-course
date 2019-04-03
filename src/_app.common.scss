@@ -58,12 +58,21 @@ ActionBar {
     padding: 20;
 }
 
-/* .btn {
-    border-width: 1;
-    border-color: purple;
-    width: 100%;
-    padding: 5 10;
-    border-radius: 30%;
-    margin: 5 0;
+.btn-success {
+    background: $success;
+    border-color: $success;
+    color: white;
  }
- */
+
+ .btn-danger {
+     background: $danger;
+     border-color: $danger;
+     color: white;
+ }
+
+ .btn-flat {
+     background: transparent;
+     border-color: transparent;
+    border-width: 1;
+    color: $primary;
+ }
