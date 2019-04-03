@@ -29,6 +29,14 @@
     row="0"
     [col]="i">
 </Label>
+<Label
+    width="50"
+    height="50"
+    *ngFor="let day of days let i = index;"
+    [text] ="day.dayInMonth"
+    [row]="getRow(i, day)"
+    [col]="day.dayInWeek"
+></Label>
 </GridLayout>
 </FlexboxLayout>
 </ScrollView>

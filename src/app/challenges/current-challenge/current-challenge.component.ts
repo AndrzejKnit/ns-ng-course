@@ -15,7 +15,9 @@ declare var android: any;
 })
 export class CurrentChallengeComponent implements OnInit {
     weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-    days: { dayInMonth: number, dayInWeek: number }[];
+    days: { dayInMonth: number, dayInWeek: number }[] = [];
+    private currentMonth: number;
+    private currentYear: number;
 
     constructor(
         private modalDialog: ModalDialogService,
@@ -24,15 +26,24 @@ export class CurrentChallengeComponent implements OnInit {
             ) { }
 
     ngOnInit() {
-        const currentYear = new Date().getFullYear();
-        const currentMonth = new Date().getMonth();
-        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        this.currentYear = new Date().getFullYear();
+        this.currentMonth = new Date().getMonth();
+        const daysInMonth = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
 
         for (let i = 1; i < daysInMonth + 1; i++ ) {
-            const date = new Date(currentYear, currentMonth, i);
+            const date = new Date(this.currentYear, this.currentMonth, i);
             const dayInWeek = date.getDay();
-            this.days.push({ dayInMonth: i, dayInWeek: dayInWeek })
+            this.days.push({ dayInMonth: i, dayInWeek: dayInWeek });
         }
+    }
+
+    getRow(index: number, day: { dayInMonth: number, dayInWeek: number }) {
+        const startRow = 1;
+        const weekRow = Math.floor(index / 7);
+        const firstWeekDayOfMonth = new Date(this.currentYear, this.currentMonth, 1).getDay();
+        const irregularRow = day.dayInWeek < firstWeekDayOfMonth ? 1 : 0;
+
+        return startRow + weekRow + irregularRow;
     }
 
     onChangeStatus() {
