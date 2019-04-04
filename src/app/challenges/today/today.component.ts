@@ -14,6 +14,10 @@ export class TodayComponent implements OnInit {
   ngOnInit() {
   }
 
+  onActionSelected(action: 'complete' | 'fail' | 'cancel') {
+      console.log(action);
+  }
+
   onCurrentChallenge() {
     this.router.navigate(['/current-challenge'], {transition: {name:'slideLeft'}});
   }

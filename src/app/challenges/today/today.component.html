@@ -2,8 +2,5 @@
     title="Today's challenges"
     [showBackButton]="false">
 </ns-action-bar>
-<FlexboxLayout>
-    <Button class="btn btn-success btn-rounded-lg" text="Completed"></Button>
-    <Button class="btn btn-danger btn-rounded-lg" text="Failed"></Button>
-    <Button class="btn btn-flat btn-rounded-lg" text="Reset"></Button>
-</FlexboxLayout>
+<ns-challenge-actions
+    (actionSelect)="onActionSelected($event)" cancelText="Reset"></ns-challenge-actions>

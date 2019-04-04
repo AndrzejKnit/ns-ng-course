@@ -27,13 +27,17 @@
     *ngFor="let weekDay of weekDays; let i = index"
     [text]="weekDay"
     row="0"
-    [col]="i">
+    [col]="i"
+
+    >
 </Label>
 <FlexboxLayout
     class="day not-settable"
     *ngFor="let day of days let i = index;"
     [row]="getRow(i, day)"
-    [col]="day.dayInWeek">
+    [col]="day.dayInWeek"
+    (tap)="onChangeStatus()"
+    >
 <Label
     [text] ="day.dayInMonth"
 ></Label>
