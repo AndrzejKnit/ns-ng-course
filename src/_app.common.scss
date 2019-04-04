@@ -22,31 +22,38 @@ ActionBar {
     flex-direction: column;
     align-items: center;
 }
-.input-field {
-    width: 80%;
+
+.form {
+    .input-field {
+        width: 80%;
 
 
-.label {
-    color: $primary;
-    font-weight: bold;
+    .label {
+        color: $primary;
+        font-weight: bold;
+        font-family: 'Oswald','Oswald-Bold', 'Oswald-Regular';
+    }
+
+    .input {
+        border-bottom-width: 2;
+        border-color: $primary;
+        width: 100%;
+    }
+    }
 }
 
-.input {
-    border-bottom-width: 2;
-    border-color: $primary;
-    width: 100%;
-}
-}
 
 .h1 {
    font-weight: bold;
    color: $primary;
+   font-family: 'Oswald','Oswald-Bold', 'Oswald-Regular';
 }
 
 .fa {
     font-family: 'FontAwesome', 'Font-Awesome';
-
 }
+
+
 
 .form-control {
     border-bottom-color: purple;
