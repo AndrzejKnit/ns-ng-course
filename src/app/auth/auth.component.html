@@ -2,7 +2,7 @@
     title="Login"
     [showBackButton]="false"
     [hasMenu]="false"></ns-action-bar>
-<StackLayout class="form" [fromGroup]="form">
+<StackLayout class="form" [formGroup]="form">
         <StackLayout class="input-field">
                 <Label
                     class="label"
@@ -16,6 +16,7 @@
                     [autocorrection]="false"
                     autocapitalizationType="none"
                     formControlName="email"
+                    #emailEl
                 >
                 </TextField>
                 <Label
@@ -37,6 +38,7 @@
                     [secure]="true"
                     hint="Min 6 characters"
                     formControlName="password"
+                    #passwordEl
                     >
                 </TextField>
                 <Label
@@ -46,9 +48,7 @@
     <Button
         text="Login"
         class="btn btn-primary btn-rounded-lg"
-        [nsRouterLink]="['/challenges']"
-        routerLinkActive="router-link-active"
-        [clearHistory]="true">
+        (tap)="onSubmit()">
     </Button>
 </StackLayout>
 
