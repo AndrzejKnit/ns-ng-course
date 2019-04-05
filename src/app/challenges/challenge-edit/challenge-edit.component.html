@@ -36,7 +36,13 @@
         *ngIf="!descriptionCtrl.valid && descriptionCtrl.touched"
         text="Please enter a valid description."></Label>
 </StackLayout>
-<Button class="btn btn-primary" text="Save" [isEnabled]="titleCtrl.valid && descriptionCtrl.valid"></Button>
+<Button
+    class="btn btn-primary"
+    text="Save"
+    [isEnabled]="titleCtrl.valid && descriptionCtrl.valid"
+    (tap)="onSubmit(titleCtrl.value, descriptionCtrl.value)"
+    >
+</Button>
 </FlexboxLayout>
 
 
