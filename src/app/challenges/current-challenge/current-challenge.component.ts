@@ -1,7 +1,11 @@
-import { Component, ViewContainerRef, OnInit } from "@angular/core";
+import { Component, ViewContainerRef, OnInit, OnDestroy } from "@angular/core";
 import { ModalDialogService } from 'nativescript-angular/modal-dialog';
+import { Subscription } from "rxjs";
 import { DayModalComponent } from "../day-modal/day-modal.component";
 import { UIService } from "~/app/shared/ui/ui.service";
+import { ChallengeService } from "../challenges.service";
+import { Challenge } from "../challenge.model";
+
 
 declare var android: any;
 
@@ -13,20 +17,24 @@ declare var android: any;
         './current-challenge.component.scss'],
     moduleId: module.id
 })
-export class CurrentChallengeComponent implements OnInit {
+export class CurrentChallengeComponent implements OnInit, OnDestroy {
     weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-    days: { dayInMonth: number, dayInWeek: number }[] = [];
+    currenChallenge: Challenge;
     private currentMonth: number;
     private currentYear: number;
+    private curChallengeSub: Subscription;
 
     constructor(
         private modalDialog: ModalDialogService,
         private vcRef: ViewContainerRef,
-        private uiService: UIService
+        private uiService: UIService,
+        private challengeService: ChallengeService
             ) { }
 
     ngOnInit() {
-
+        this.curChallengeSub =  this.challengeService.currentChallenge.subscribe(challenge => {
+            this.currenChallenge = challenge;
+        });
     }
 
     getRow(index: number, day: { dayInMonth: number, dayInWeek: number }) {
@@ -50,5 +58,9 @@ export class CurrentChallengeComponent implements OnInit {
         });
     }
 
-
+    ngOnDestroy() {
+        if (this.curChallengeSub) {
+            this.curChallengeSub.unsubscribe();
+        }
+    }
 }

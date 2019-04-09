@@ -17,10 +17,19 @@
 <ScrollView>
 <FlexboxLayout class="page">
     <StackLayout>
+        <Label text="No challenge found"></Label>>
+        <Button
+            class="btn btn-primary"
+            text="Create One"
+            nsRouterLink="/challenges/replace"
+            pageTransition="slideLeft">
+        </Button>
+    </StackLayout>
+    <StackLayout *ngIf="currenChallenge">
         <Label class="h1 text-center" text="Take a walk every day"></Label>
         <Label class="body text-center" text="Walk for at least 20 minutes on every of the week."></Label>
     </StackLayout>
-<GridLayout rows="auto,*,*,*,*,*,*" columns="*,*,*,*,*,*,*">
+<GridLayout rows="auto,*,*,*,*,*,*" columns="*,*,*,*,*,*,*" *ngIf="currenChallenge">
     <Label
     class="text-center week-day-label"
     width="100%"
@@ -33,7 +42,7 @@
 </Label>
 <FlexboxLayout
     class="day not-settable"
-    *ngFor="let day of days let i = index;"
+    *ngFor="let day of currenChallenge.days let i = index;"
     [row]="getRow(i, day)"
     [col]="day.dayInWeek"
     (tap)="onChangeStatus()"
