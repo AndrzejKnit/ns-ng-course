@@ -1,5 +1,11 @@
 /* Add mobile styles for the component here.  */
-
+.form {
+    border-width: 0;
+    border-color: #ccc;
+    opacity: 0.8;
+    margin: 20;
+    box-shadow: 4 4 36 #000;
+}
 .logo {
     background-image: url("res://portal1");
     background-repeat: no-repeat;
@@ -15,4 +21,16 @@
     border-bottom-color: #eeeeee;
     padding: 4 32 4 0;
     height: 28;
+}
+
+.center {
+    text-align: center;
+}
+
+.line {
+    border-bottom-width: 2;
+    color: #ccc;
+    border-color: #ccc;
+    width: 100%;
+    height: 2;
 }

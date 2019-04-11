@@ -22,7 +22,7 @@ export class Challenge {
         }
         }
 
-        get currentDate() {
+        get currentDay() {
             return this._days.find(d => d.dayInMonth === new Date().getDate());
         }
 

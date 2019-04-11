@@ -3,7 +3,11 @@
     [showBackButton]="false"
     [hasMenu]="false">
     </ns-action-bar>
-<StackLayout class="form" [formGroup]="form" class="logo">
+<StackLayout class="form" [formGroup]="form">
+    <StackLayout>
+        <Label class="h1 center" text="Welcome to the Portal"></Label>
+        <Label class="h2 center" text="enter your login details below:"></Label>
+    </StackLayout>
         <StackLayout class="input-field">
                 <Label
                     class="label"
@@ -47,7 +51,7 @@
                     *ngIf="!passwordControlIsValid"
                     text="Please enter a valid password.">
                 </Label>
-                <Label text="Language" class="title-label">
+                <Label text="Language" class="label">
                 </Label>
                 <Label
                     hint="English"
@@ -66,5 +70,19 @@
         [isEnabled]="form.valid"
         >
     </Button>
+    <StackLayout>
+        <label text=""></label>
+        <Label class="center" text=""></Label>
+        <Label class="center" text=""></Label>
+        <label text=""></label>
+        <Label class="center" text=""></Label>
+        <Label class="center" text=""></Label>
+        </StackLayout>
+<StackLayout>
+    <label class="line"></label>
+<Label class="center" text="Powered by Power Solutions"></Label>
+<Label class="center" text="© 2015-2019 Power Solutions"></Label>
 </StackLayout>
+</StackLayout>
+
 
