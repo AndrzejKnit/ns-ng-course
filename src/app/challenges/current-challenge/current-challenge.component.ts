@@ -19,9 +19,7 @@ declare var android: any;
 })
 export class CurrentChallengeComponent implements OnInit, OnDestroy {
     weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-    currenChallenge: Challenge;
-    private currentMonth: number;
-    private currentYear: number;
+    currentChallenge: Challenge;
     private curChallengeSub: Subscription;
 
     constructor(
@@ -33,14 +31,14 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.curChallengeSub =  this.challengeService.currentChallenge.subscribe(challenge => {
-            this.currenChallenge = challenge;
+            this.currentChallenge = challenge;
         });
     }
 
     getRow(index: number, day: { dayInMonth: number, dayInWeek: number }) {
         const startRow = 1;
         const weekRow = Math.floor(index / 7);
-        const firstWeekDayOfMonth = new Date(this.currentYear, this.currentMonth, 1).getDay();
+        const firstWeekDayOfMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1).getDay();
         const irregularRow = day.dayInWeek < firstWeekDayOfMonth ? 1 : 0;
 
         return startRow + weekRow + irregularRow;
@@ -64,3 +62,4 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
         }
     }
 }
+
