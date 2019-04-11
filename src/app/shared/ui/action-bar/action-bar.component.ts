@@ -3,6 +3,7 @@ import { isAndroid } from 'tns-core-modules/platform';
 import { Page } from 'tns-core-modules/ui/page/page';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { UIService } from '../ui.service';
+import { Image } from "tns-core-modules/ui/image";
 
 declare var android: any;
 

@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { TextField } from 'tns-core-modules/ui/text-field';
+import { action } from "tns-core-modules/ui/dialogs";
 
 @Component({
   selector: 'ns-auth',
@@ -16,6 +17,7 @@ export class AuthComponent implements OnInit {
     emailControlIsValid = true;
     passwordControlIsValid = true;
     isLogin = true;
+    public language: string = 'English';
     @ViewChild('passwordEl') passwordEl: ElementRef<TextField>
     @ViewChild('emailEl') emailEl: ElementRef<TextField>
 
@@ -39,6 +41,18 @@ export class AuthComponent implements OnInit {
         this.passwordControlIsValid = status === 'VALID';
     });
   }
+  onTypeServiceTap(): void {
+    let options = {
+        title: "Language",
+        message: "Choose your language",
+        cancelButtonText: "Cancel",
+        actions: ["English", "Deutsch", "Polish"]
+    };
+
+    action(options).then((result) => {
+        this.language = (result == 'Cancel') ? this.language : result;
+    });
+}
 
 
   onSubmit() {

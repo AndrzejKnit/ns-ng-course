@@ -1,8 +1,9 @@
 <ns-action-bar
     [title]="isLogin ? 'Login' : 'Signup'"
     [showBackButton]="false"
-    [hasMenu]="false"></ns-action-bar>
-<StackLayout class="form" [formGroup]="form">
+    [hasMenu]="false">
+    </ns-action-bar>
+<StackLayout class="form" [formGroup]="form" class="logo">
         <StackLayout class="input-field">
                 <Label
                     class="label"
@@ -44,7 +45,18 @@
                 </TextField>
                 <Label
                     *ngIf="!passwordControlIsValid"
-                    text="Please enter a valid password."></Label>
+                    text="Please enter a valid password.">
+                </Label>
+                <Label text="Language" class="title-label">
+                </Label>
+                <Label
+                    hint="English"
+                    class="scf-input"
+                    editable="false"
+                    [text]="language"
+                    (tap)="onTypeServiceTap()">
+                </Label>
+
             </StackLayout>
             <Button class="btn btn-flat" [text]="isLogin ? 'Signup instead' : 'Login instead'"  (tap)="onSwitch()"></Button>
     <Button
