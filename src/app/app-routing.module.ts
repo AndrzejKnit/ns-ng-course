@@ -10,7 +10,8 @@ const routes: Routes = [
     {
         path: 'challenges',
         loadChildren: '~/app/challenges/challenges.module#ChallengesModule'
-    }
+    },
+    { path: "orders", loadChildren: "~/app/orders/orders.module#OrdersModule" },
 ];
 
 @NgModule({

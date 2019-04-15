@@ -1,8 +1,12 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ChangeDetectorRef, ViewContainerRef } from "@angular/core";
+import { NavigationEnd, Router } from "@angular/router";
+import { RouterExtensions } from "nativescript-angular/router";
 import { Subscription } from "rxjs";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular/side-drawer-directives";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { UIService } from "./shared/ui/ui.service";
+import { filter } from "rxjs/operators";
+import * as app from "tns-core-modules/application";
 
 
 
@@ -17,11 +21,14 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     activeChallenge = '';
     private drawerSub: Subscription;
     private drawer: RadSideDrawer;
+    private _activatedUrl: string;
+    private _sideDrawerTransition: DrawerTransitionBase;
 
     constructor(
         private uiService: UIService,
         private changeDetectionRef: ChangeDetectorRef,
-        private vcRef: ViewContainerRef
+        private vcRef: ViewContainerRef,
+        private router: Router, private routerExtensions: RouterExtensions
         ) {}
 
     ngOnInit() {
@@ -31,6 +38,23 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
             }
          });
          this.uiService.setRootVCRef(this.vcRef);
+    }
+    get sideDrawerTransition(): DrawerTransitionBase {
+        return this._sideDrawerTransition;
+    }
+
+    isComponentSelected(url: string): boolean {
+        return this._activatedUrl === url;
+    }
+    onNavItemTap(navItemRoute: string): void {
+        this.routerExtensions.navigate([navItemRoute], {
+            transition: {
+                name: "fade"
+            }
+        });
+
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.closeDrawer();
     }
 
     ngAfterViewInit() {

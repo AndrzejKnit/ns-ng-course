@@ -10,6 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { DayModalComponent } from './challenges/day-modal/day-modal.component';
 import { SharedModule } from "./shared/shared.module";
 import { ChallengeActionsModule } from "./challenges/challenge-actions/challenge-actions.module";
+import { ItemsComponent } from './items/items.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ContactsEditComponent } from './contacts/contacts-edit/contacts-edit.component';
+import { SettingsComponent } from './settings/settings.component';
+
 
 
 
@@ -36,7 +41,11 @@ import { ChallengeActionsModule } from "./challenges/challenge-actions/challenge
     declarations: [
         AppComponent,
         AuthComponent,
-        DayModalComponent
+        DayModalComponent,
+        ItemsComponent,
+        ContactsComponent,
+        ContactsEditComponent,
+        SettingsComponent
     ],
     providers: [],
     schemas: [NO_ERRORS_SCHEMA],
