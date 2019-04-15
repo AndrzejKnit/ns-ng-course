@@ -35,12 +35,14 @@ export class ChallengeService {
     }
 
    createNewChallenge(title: string, description: string) {
-    const newChallenge = new Challenge(title, description, new Date().getFullYear(), new Date().getMonth());
-
-    this.http.put('https://ns-ng-course-98db2.firebaseio.com/challenge.json', newChallenge).subscribe(res => {
-        console.log(res);
-    });
-    this._currentChallenge.next(newChallenge);
+    const newChallenge = new Challenge(
+            title,
+            description,
+            new Date().getFullYear(),
+            new Date().getMonth()
+        );
+        this.saveToServer(newChallenge);
+        this._currentChallenge.next(newChallenge);
    }
 
    updateChallenge(title: string, description: string) {
@@ -52,7 +54,7 @@ export class ChallengeService {
                 challenge.month,
                 challenge.days
                 );
-                //Send to a server
+                this.saveToServer(updatedChallenge);
                 this._currentChallenge.next(updatedChallenge);
        });
    }
@@ -65,8 +67,14 @@ export class ChallengeService {
             const dayIndex = challenge.days.findIndex(d => d.dayInMonth === dayInMonth);
             challenge.days[dayIndex].status = status;
             this._currentChallenge.next(challenge);
-            console.log(challenge.days[dayIndex]);
-            // Save this to a server
+            this.saveToServer(challenge);
         });
+   }
+
+   private saveToServer(challenge: Challenge) {
+    this.http.put('https://ns-ng-course-98db2.firebaseio.com/challenge.json', challenge)
+    .subscribe(res => {
+        console.log(res);
+    });
    }
 }
