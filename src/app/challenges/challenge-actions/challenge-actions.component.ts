@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DayStatus } from '../day.model';
+import { inputType } from 'tns-core-modules/ui/dialogs/dialogs';
 
 @Component({
   selector: 'ns-challenge-actions',
@@ -11,6 +12,7 @@ export class ChallengeActionsComponent implements OnInit, OnChanges {
     @Output() actionSelect = new EventEmitter<DayStatus>();
     @Input() cancelText = 'Cancel';
     @Input() chosen: 'complete' | 'fail' = null;
+    @Input() startDone = false;
     action: 'complete' | 'fail' = null;
     done = false;
 
@@ -22,6 +24,11 @@ export class ChallengeActionsComponent implements OnInit, OnChanges {
 
         if (changes.chosen.currentValue === null) {
             this.done = false;
+        }
+    }
+    if (changes.startDone) {
+        if (changes.startDone.currentValue) {
+            this.done = true;
         }
     }
   }
