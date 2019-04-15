@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { take } from "rxjs/operators";
+import { take, tap } from "rxjs/operators";
 import { Challenge } from "./challenge.model";
 import { DayStatus, Day } from "./day.model";
 import { HttpClient } from "@angular/common/http";
@@ -18,8 +18,20 @@ export class ChallengeService {
     }
 
     fetchCurrentChallenge() {
-        return this.http.get<{title: string, description: string, month: number, year: number, _days: Day[]}>('https://ns-ng-course-98db2.firebaseio.com/challenge.json');
-
+        return this.http.get<{title: string, description: string, month: number, year: number, _days: Day[]}>('https://ns-ng-course-98db2.firebaseio.com/challenge.json')
+        .pipe(tap(resData => {
+            if (resData) {
+                const loadedChallenge = new Challenge(
+                    resData.title,
+                    resData.description,
+                    resData.year,
+                    resData.month,
+                    resData._days
+                    );
+                    this._currentChallenge.next(loadedChallenge);
+            }
+        })
+        );
     }
 
    createNewChallenge(title: string, description: string) {
