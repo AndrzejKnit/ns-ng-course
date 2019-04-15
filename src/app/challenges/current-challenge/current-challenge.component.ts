@@ -5,6 +5,7 @@ import { DayModalComponent } from "../day-modal/day-modal.component";
 import { UIService } from "~/app/shared/ui/ui.service";
 import { ChallengeService } from "../challenges.service";
 import { Challenge } from "../challenge.model";
+import { Day } from "../day.model";
 
 
 declare var android: any;
@@ -34,6 +35,9 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
             this.currentChallenge = challenge;
         });
     }
+    getIsSettable(dayInMonth: number) {
+        return dayInMonth <= new Date().getDate();
+    }
 
     getRow(index: number, day: { dayInMonth: number, dayInWeek: number }) {
         const startRow = 1;
@@ -44,13 +48,16 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
         return startRow + weekRow + irregularRow;
     }
 
-    onChangeStatus() {
+    onChangeStatus(day: Day) {
+        if (this.getIsSettable(day.dayInMonth)) {
+            return;
+        }
         this.modalDialog.showModal(DayModalComponent, {
             fullscreen: true,
             viewContainerRef: this.uiService.getRootVCRef()
             ? this.uiService.getRootVCRef()
             : this.vcRef,
-            context: { date: new Date() }
+            context: { date: day.date }
         }).then((action: string) => {
             console.log(action);
         });
