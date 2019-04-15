@@ -3,10 +3,15 @@ import { BehaviorSubject } from "rxjs";
 import { take } from "rxjs/operators";
 import { Challenge } from "./challenge.model";
 import { DayStatus } from "./day.model";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({ providedIn: 'root' })
 export class ChallengeService {
     private _currentChallenge = new BehaviorSubject<Challenge>(null);
+
+    constructor(private http: HttpClient) {
+
+    }
 
     get currentChallenge() {
         return this._currentChallenge.asObservable();
@@ -14,7 +19,10 @@ export class ChallengeService {
 
    createNewChallenge(title: string, description: string) {
     const newChallenge = new Challenge(title, description, new Date().getFullYear(), new Date().getMonth());
-    // Save it to server
+
+    this.http.put('https://ns-ng-course-98db2.firebaseio.com/challenge.json', newChallenge).subscribe(res => {
+        console.log(res);
+    });
     this._currentChallenge.next(newChallenge);
    }
 

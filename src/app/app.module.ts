@@ -3,6 +3,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives';
 import { ReactiveFormsModule } from "@angular/forms";
+import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 
 import { AppComponent } from "./app.component";
 import { AuthComponent } from './auth/auth.component';
@@ -32,6 +33,7 @@ import { SettingsComponent } from './settings/settings.component';
     imports: [
         NativeScriptModule,
         NativeScriptFormsModule,
+        NativeScriptHttpClientModule,
         NativeScriptUISideDrawerModule,
         ReactiveFormsModule,
         AppRoutingModule,
