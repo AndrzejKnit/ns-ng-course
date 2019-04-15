@@ -18,6 +18,20 @@ export class ChallengeService {
     this._currentChallenge.next(newChallenge);
    }
 
+   updateChallenge(title: string, description: string) {
+       this._currentChallenge.pipe(take(1)).subscribe(challenge => {
+        const updatedChallenge = new Challenge(
+                title,
+                description,
+                challenge.year,
+                challenge.month,
+                challenge.days
+                );
+                //Send to a server
+                this._currentChallenge.next(updatedChallenge);
+       });
+   }
+
    updateDayStatus(dayInMonth: number, status:  DayStatus) {
         this._currentChallenge.pipe(take(1)).subscribe(challenge => {
             if (!challenge || challenge.days.length < dayInMonth) {
