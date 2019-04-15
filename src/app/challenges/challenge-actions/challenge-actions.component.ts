@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DayStatus } from '../day.model';
 
 @Component({
@@ -7,17 +7,26 @@ import { DayStatus } from '../day.model';
   styleUrls: ['./challenge-actions.component.scss'],
   moduleId: module.id,
 })
-export class ChallengeActionsComponent implements OnInit {
+export class ChallengeActionsComponent implements OnInit, OnChanges {
     @Output() actionSelect = new EventEmitter<DayStatus>();
     @Input() cancelText = 'Cancel';
+    @Input() chosen: 'complete' | 'fail' = null;
     action: 'complete' | 'fail' = null;
+    done = false;
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.chosen) {
+        this.action = changes.chosen.currentValue;
+    }
+  }
 
   ngOnInit() {
   }
 
   onAction(action: 'complete' | 'fail' | 'cancel') {
+      this.done = true;
       let status = DayStatus.Open;
     if (action === 'complete') {
         status = DayStatus.Completed;
@@ -27,6 +36,7 @@ export class ChallengeActionsComponent implements OnInit {
         this.action = 'fail';
     } else if (action === 'cancel') {
         this.action = null;
+        this.done = false;
     }
     this.actionSelect.emit(status);
   }

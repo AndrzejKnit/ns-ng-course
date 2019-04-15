@@ -142,22 +142,31 @@ $sidedrawer-list-icon-size: 20;
 
 
 .btn-success {
-    background: $success;
+    background-color: $success;
     border-color: $success;
+    border-width: 1;
     color: white;
  }
 
  .btn-danger {
-     background: $danger;
+     background-color: $danger;
      border-color: $danger;
+     border-width: 1;
      color: white;
  }
 
  .btn-flat {
-     background: transparent;
+     background-color: transparent;
      border-color: transparent;
     border-width: 1;
     color: $primary;
+ }
+
+ .btn-success:disabled,
+ .btn-danger:disabled {
+     background-color: #ccc;
+     color: #777;
+     border-color: #ccc;
  }
 
 

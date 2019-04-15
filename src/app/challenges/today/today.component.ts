@@ -33,6 +33,15 @@ export class TodayComponent implements OnInit, OnDestroy {
       this.challengeService.updateDayStatus(this.currentDay.dayInMonth, action);
   }
 
+  getActionName() {
+      if (this.currentDay.status === DayStatus.Completed) {
+          return 'complete';
+      }
+      if (this.currentDay.status === DayStatus.Failed) {
+          return 'fail';
+      }
+  }
+
   onCurrentChallenge() {
     this.router.navigate(['/current-challenge'], {transition: {name:'slideLeft'}});
   }
