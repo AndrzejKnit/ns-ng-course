@@ -5,7 +5,7 @@ import { DayModalComponent } from "../day-modal/day-modal.component";
 import { UIService } from "~/app/shared/ui/ui.service";
 import { ChallengeService } from "../challenges.service";
 import { Challenge } from "../challenge.model";
-import { Day } from "../day.model";
+import { Day, DayStatus } from "../day.model";
 
 
 declare var android: any;
@@ -49,7 +49,7 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
     }
 
     onChangeStatus(day: Day) {
-        if (this.getIsSettable(day.dayInMonth)) {
+        if (!this.getIsSettable(day.dayInMonth)) {
             return;
         }
         this.modalDialog.showModal(DayModalComponent, {
@@ -58,8 +58,8 @@ export class CurrentChallengeComponent implements OnInit, OnDestroy {
             ? this.uiService.getRootVCRef()
             : this.vcRef,
             context: { date: day.date }
-        }).then((action: string) => {
-            console.log(action);
+        }).then((status: DayStatus) => {
+            this.challengeService.updateDayStatus(day.dayInMonth, status);
         });
     }
 
