@@ -82,9 +82,13 @@ export class ChallengeService {
    }
 
    private saveToServer(challenge: Challenge) {
-    this.http.put('https://ns-ng-course-98db2.firebaseio.com/challenge.json', challenge)
+       this.authService.user.pipe(switchMap(currentUser => {
+         return this.http.put(`https://ns-ng-course-98db2.firebaseio.com/challenge.json?auth=${currentUser.token}`,
+         challenge);
+        })
+)
     .subscribe(res => {
         console.log(res);
-    });
+});
    }
 }
