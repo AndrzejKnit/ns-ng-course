@@ -1,15 +1,16 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { take, tap } from "rxjs/operators";
+import { take, tap, switchMap } from "rxjs/operators";
 import { Challenge } from "./challenge.model";
 import { DayStatus, Day } from "./day.model";
 import { HttpClient } from "@angular/common/http";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable({ providedIn: 'root' })
 export class ChallengeService {
     private _currentChallenge = new BehaviorSubject<Challenge>(null);
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private authService: AuthService) {
 
     }
 
@@ -18,8 +19,17 @@ export class ChallengeService {
     }
 
     fetchCurrentChallenge() {
-        return this.http.get<{title: string, description: string, month: number, year: number, _days: Day[]}>('https://ns-ng-course-98db2.firebaseio.com/challenge.json')
-        .pipe(tap(resData => {
+        return this.authService.user.pipe(
+            switchMap(currentUser => {
+            return this.http.get<{
+                title: string,
+                description: string,
+                month: number,
+                year: number,
+                _days: Day[]
+            }>(`https://ns-ng-course-98db2.firebaseio.com/challenge.json?auth=${currentUser.token}`);
+        }),
+        tap(resData => {
             if (resData) {
                 const loadedChallenge = new Challenge(
                     resData.title,
