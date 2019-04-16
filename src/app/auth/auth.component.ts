@@ -6,6 +6,8 @@ import { ElementRef } from '@angular/core';
 import { TextField } from 'tns-core-modules/ui/text-field';
 import { action } from "tns-core-modules/ui/dialogs";
 
+import { AuthService } from './auth.service';
+
 @Component({
   selector: 'ns-auth',
   templateUrl: './auth.component.html',
@@ -21,7 +23,7 @@ export class AuthComponent implements OnInit {
     @ViewChild('passwordEl') passwordEl: ElementRef<TextField>
     @ViewChild('emailEl') emailEl: ElementRef<TextField>
 
-  constructor(private router: RouterExtensions) { }
+  constructor(private router: RouterExtensions, private authService: AuthService) { }
 
   ngOnInit() {
       this.form = new FormGroup({
@@ -72,7 +74,7 @@ export class AuthComponent implements OnInit {
       if (this.isLogin) {
           console.log('Logging in...');
       } else {
-          console.log('Signing up...');
+          this.authService.signUp(email, password);
       }
       this.router.navigate(['/challenges']);
   }
