@@ -19,6 +19,8 @@ export class AuthComponent implements OnInit {
     emailControlIsValid = true;
     passwordControlIsValid = true;
     isLogin = true;
+    isLoading = false;
+
     public language: string = 'English';
     @ViewChild('passwordEl') passwordEl: ElementRef<TextField>
     @ViewChild('emailEl') emailEl: ElementRef<TextField>
@@ -71,12 +73,24 @@ export class AuthComponent implements OnInit {
       this.form.reset();
       this.emailControlIsValid = true;
       this.passwordControlIsValid = true;
+      this.isLoading = true;
       if (this.isLogin) {
-          console.log('Logging in...');
+          this.authService.login(email, password).subscribe(resData => {
+                this.router.navigate(['/challenges']);
+                this.isLoading = false;
+          }, err => {
+            console.log(err);
+            this.isLoading = false;
+          });
       } else {
-          this.authService.signUp(email, password);
+          this.authService.signUp(email, password).subscribe(resData => {
+                this.router.navigate(['/challenges'] );
+                this.isLoading = false;
+          }, err => {
+            console.log(err);
+            this.isLoading = false;
+          });
       }
-      this.router.navigate(['/challenges']);
   }
 
   onDone() {
