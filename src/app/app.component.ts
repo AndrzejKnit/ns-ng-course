@@ -7,6 +7,7 @@ import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nat
 import { UIService } from "./shared/ui/ui.service";
 import { filter } from "rxjs/operators";
 import * as app from "tns-core-modules/application";
+import { AuthService } from "./auth/auth.service";
 
 
 
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         private uiService: UIService,
         private changeDetectionRef: ChangeDetectorRef,
         private vcRef: ViewContainerRef,
+        private authService: AuthService,
         private router: Router, private routerExtensions: RouterExtensions
         ) {}
 
@@ -69,6 +71,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
     onLogout() {
         this.uiService.toggleDrawer();
+        this.authService.logout();
         }
 
     ngOnDestroy() {

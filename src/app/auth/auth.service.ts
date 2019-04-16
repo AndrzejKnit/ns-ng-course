@@ -3,8 +3,9 @@ import { HttpClient } from "@angular/common/http";
 import { catchError, tap } from "rxjs/operators";
 import { throwError, BehaviorSubject } from "rxjs";
 import { alert } from 'tns-core-modules/ui/dialogs';
+import { RouterExtensions } from "nativescript-angular/router";
 import { User } from "./user.model";
-import { Challenge } from "../challenges/challenge.model";
+
 
 const FIREBASE_API_KEY = 'AIzaSyB6OvfualQIwAJHZHwL01Hk9W4cs8KVhfU';
 
@@ -22,7 +23,7 @@ interface AuthResponse {
 export class AuthService {
     private _user = new BehaviorSubject<User>(null);
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private router: RouterExtensions) {}
 
     get user() {
         return this._user.asObservable();
@@ -54,6 +55,11 @@ export class AuthService {
             }
         })
         );
+    }
+
+    logout() {
+        this._user.next(null);
+        this.router.navigate(['/'], { clearHistory: true });
     }
 
     private handleLogin(email: string, token: string, userId: string, expiresIn: number) {
