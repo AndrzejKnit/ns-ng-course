@@ -19,4 +19,9 @@ export class User {
     }
     return this._token;
   }
+
+  get timeToExpiry() {
+      return this._tokenExpirationDate.getTime() - new Date().getTime();
+
+  }
 }

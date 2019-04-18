@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { take, tap, switchMap } from 'rxjs/operators';
 
 import { Challenge } from './challenge.model';
@@ -19,9 +19,10 @@ export class ChallengeService {
 
   fetchCurrentChallenge() {
     return this.authService.user.pipe(
+        take(1),
       switchMap(currentUser => {
         if (!currentUser || !currentUser.isAuth) {
-          return;
+          return of(null);
         }
         return this.http.get<{
           title: string;
@@ -90,9 +91,10 @@ export class ChallengeService {
   private saveToServer(challenge: Challenge) {
     this.authService.user
       .pipe(
+          take(1),
         switchMap(currentUser => {
           if (!currentUser || !currentUser.isAuth) {
-            return;
+            return of(null);
           }
           return this.http.put(
             `https://ns-ng-course-98db2.firebaseio.com/challenge.json?auth=${currentUser.token}`,
