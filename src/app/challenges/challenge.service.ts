@@ -30,9 +30,7 @@ export class ChallengeService {
           year: number;
           _days: Day[];
         }>(
-          `https://ns-ng-course.firebaseio.com/challenge.json?auth=${
-            currentUser.token
-          }`
+          `https://ns-ng-course-98db2.firebaseio.com/challenge.json?auth=${currentUser.token}`
         );
       }),
       tap(resData => {
@@ -97,9 +95,7 @@ export class ChallengeService {
             return;
           }
           return this.http.put(
-            `https://ns-ng-course.firebaseio.com/challenge.json?auth=${
-              currentUser.token
-            }`,
+            `https://ns-ng-course-98db2.firebaseio.com/challenge.json?auth=${currentUser.token}`,
             challenge
           );
         })
