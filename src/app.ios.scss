@@ -1,15 +1,7 @@
-// Import app variables
-@import 'app-variables';
-
-// Import the theme’s main ruleset - both index and platform specific.
-@import '~nativescript-theme-core/scss/index';
-@import '~nativescript-theme-core/scss/platforms/index.ios';
-
-// Import common styles
 @import 'app.common';
-
-// Place any CSS rules you want to apply only on iOS here
-/* .btn {
-    background: transparent;
-    color: purple;
- } */
+@import '~nativescript-theme-core/scss/platforms/index.ios';
+/* 
+.btn {
+  background: transparent;
+  color: #7c015d;
+} */

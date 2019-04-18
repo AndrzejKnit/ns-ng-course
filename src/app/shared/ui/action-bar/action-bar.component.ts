@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { isAndroid } from 'tns-core-modules/platform';
-import { Page } from 'tns-core-modules/ui/page/page';
+import { isAndroid } from 'platform';
+import { Page } from 'tns-core-modules/ui/page';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { UIService } from '../ui.service';
-import { Image } from "tns-core-modules/ui/image";
+import { UIService } from '../../ui.service';
 
 declare var android: any;
 
@@ -14,48 +13,48 @@ declare var android: any;
   moduleId: module.id
 })
 export class ActionBarComponent implements OnInit {
-    @Input() title: string;
-    @Input() showBackButton = true;
-    @Input() hasMenu = true;
-
+  @Input() title: string;
+  @Input() showBackButton = true;
+  @Input() hasMenu = true;
 
   constructor(
-      private page: Page,
-      private router: RouterExtensions,
-      private uiService: UIService
-      ) { }
+    private page: Page,
+    private router: RouterExtensions,
+    private uiService: UIService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
+
   get android() {
-      return isAndroid;
+    return isAndroid;
   }
 
   get canGoBack() {
-    return this.router.canGoBack() && this.showBackButton;;
+    return this.router.canGoBack() && this.showBackButton;
   }
 
   onGoBack() {
-      this.router.backToPreviousPage();
+    this.router.backToPreviousPage();
   }
 
   onLoadedActionBar() {
     if (isAndroid) {
-       const androidToolbar =  this.page.actionBar.nativeView;
-       const backButton = androidToolbar.getNavigationIcon();
-        let color = '#171717';
-       if (this.hasMenu) {
-            color = '#ffffff'
-       }
-       if (backButton) {
-           backButton.setColorFilter(android.graphics.Color.parseColor(color),
-           (<any>android.graphics).PorterDuff.Mode.SRC_ATOP);
-       }
+      const androidToolbar = this.page.actionBar.nativeView;
+      const backButton = androidToolbar.getNavigationIcon();
+      let color = '#171717';
+      if (this.hasMenu) {
+        color = '#ffffff'
+      }
+      if (backButton) {
+        backButton.setColorFilter(
+          android.graphics.Color.parseColor(color),
+          (<any>android.graphics).PorterDuff.Mode.SRC_ATOP
+        );
+      }
     }
-}
+  }
 
-    onToggleMenu() {
-        this.uiService.toggleDrawer();
-    }
-
+  onToggleMenu() {
+    this.uiService.toggleDrawer();
+  }
 }

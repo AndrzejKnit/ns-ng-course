@@ -1,67 +1,12 @@
-<RadSideDrawer [drawerTransition]="sideDrawerTransition">
-    <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
- <StackLayout row="0" class="sidedrawer-header">
-                <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
-                <Label class="sidedrawer-header-brand" text="User Name"></Label>
-                <Label class="footnote" text="username@mail.com"></Label>
-            </StackLayout>
-<ScrollView row="1">
-        <StackLayout class="sidedrawer-content">
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/orders')" (tap)="onNavItemTap('/orders')">
-                    <Label col="0" text="&#xf015;" class="fa"></Label>
-                    <Label col="1" text="Orders" class="p-r-10"></Label>
-                </GridLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/items')" (tap)="onNavItemTap('/items')">
-                    <Label col="0" text="&#xf1ea;" class="fa"></Label>
-                    <Label col="1" text="Items" class="p-r-10"></Label>
-                </GridLayout>
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/contacts')" (tap)="onNavItemTap('/contacts')">
-                    <Label col="0" text="&#xf1ea;" class="fa"></Label>
-                    <Label col="1" text="Contacts" class="p-r-10"></Label>
-                </GridLayout>
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/companies')" (tap)="onNavItemTap('/companies')">
-                    <Label col="0" text="&#xf1ea;" class="fa"></Label>
-                    <Label col="1" text="Companies" class="p-r-10"></Label>
-                </GridLayout>
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/requests')" (tap)="onNavItemTap('/requests')">
-                    <Label col="0" text="&#xf1ea;" class="fa"></Label>
-                    <Label col="1" text="Requests" class="p-r-10"></Label>
-                </GridLayout>
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/feedback')" (tap)="onNavItemTap('/feedback')">
-                    <Label col="0" text="&#xf1ea;" class="fa"></Label>
-                    <Label col="1" text="Feedback" class="p-r-10"></Label>
-                </GridLayout>
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/reports')" (tap)="onNavItemTap('/reports')">
-                    <Label col="0" text="&#xf002;" class="fa"></Label>
-                    <Label col="1" text="Reports" class="p-r-10"></Label>
-                </GridLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/sla')" (tap)="onNavItemTap('/sla')">
-                    <Label col="0" text="&#xf005;" class="fa"></Label>
-                    <Label col="1" text="SLA" class="p-r-10"></Label>
-                </GridLayout>
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/challenges')" (tap)="onNavItemTap('/challenges')">
-                    <Label col="0" text="&#xf005;" class="fa"></Label>
-                    <Label col="1" text="Dashboard" class="p-r-10"></Label>
-                </GridLayout>
-                <StackLayout class="hr-light"></StackLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/settings')" (tap)="onNavItemTap('/settings')">
-                    <Label col="0" text="&#xf013;" class="fa"></Label>
-                    <Label col="1" text="Settings" class="p-r-10"></Label>
-                </GridLayout>
-                <Button
-                    text="Logout"
-                    class="btn btn-primary btn-rounded-lg"
-                    (tap)="onLogout()"
-                    >
-                </Button>
-            </StackLayout>
-</ScrollView>
-    </GridLayout>
-
-        <page-router-outlet tkMainContent></page-router-outlet>
+<RadSideDrawer>
+  <FlexboxLayout tkDrawerContent class="drawer-container">
+    <Button
+      text="Logout"
+      class="btn btn-primary btn-rounded-lg"
+      (tap)="onLogout()"
+    ></Button>
+  </FlexboxLayout>
+  <StackLayout tkMainContent>
+    <page-router-outlet></page-router-outlet>
+  </StackLayout>
 </RadSideDrawer>
-
-

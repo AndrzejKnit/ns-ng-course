@@ -1,173 +1,95 @@
-// Place any CSS rules you want to apply on both iOS and Android here.
-// This is where the vast majority of your CSS code goes.
-/*
+/* @import '~nativescript-theme-core/css/core.light.css'; */
 @import '~nativescript-theme-core/scss/light';
 
-$primary: yellow;
-$secondary: yellow;
-$disabled: #ccc;
+@import './theme/colors';
 
 $btn-color: $primary;
 
-
-@import '~nativescript-theme-core/scss/index'; */
+@import '~nativescript-theme-core/scss/index';
 
 ActionBar {
-    background: $primary;
-    color: white;
+  background: $primary;
+  color: white;
 }
 
 .form {
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form {
-    .input-field {
-        width: 80%;
-
+  .input-field {
+    width: 80%;
 
     .label {
-        color: $primary;
-        font-weight: bold;
-        font-family: 'Oswald','Oswald-Bold', 'Oswald-Regular';
+      color: $primary;
+      font-weight: bold;
+      font-family: 'Oswald', 'Oswald-Regular', 'Oswald-Bold';
     }
 
     .label.invalid {
-        color: red;
+      color: red;
     }
 
     .input {
-        border-bottom-width: 2;
-        border-bottom-color: $primary;
-        width: 100%;
-        color: #000;
-    }
-    .input.ng-invalid.ng-touched {
-        border-bottom-color: red;
-        color: red;
+      border-bottom-width: 2;
+      border-bottom-color: $primary;
+      width: 100%;
+      color: black;
     }
 
+    .input.ng-invalid.ng-touched {
+      border-bottom-color: red;
+      color: red;
     }
+  }
 }
 
-
 .h1 {
-   font-weight: bold;
-   color: $primary;
-   font-family: 'Oswald','Oswald-Bold', 'Oswald-Regular';
+  font-weight: bold;
+  color: $primary;
+  font-family: 'Oswald', 'Oswald-Regular', 'Oswald-Bold';
 }
 
 .fa {
-    font-family: 'FontAwesome', 'Font-Awesome';
+  font-family: 'FontAwesome', 'Font-Awesome';
 }
 
+// .form-control {
+//   border-bottom-color: #7c015d;
+//   border-bottom-width: 2;
+//   margin: 5 0;
+//   font-size: 20;
+//   padding: 8 4;
+// }
 
+.drawer-container {
+  background: linear-gradient(140deg, #2b0c72, #5c3fa0);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20;
 
-.form-control {
-    border-bottom-color: purple;
-    border-bottom-width: 3;
-    margin: 5 0;
-    font-size: 20;
-    text-transform: uppercase;
-    padding: 8 4;
+  .btn {
+    width: 80%;
+    font-size: 24;
+    height: 45;
+  }
 }
 
-$sidedrawer-header-image-size: 50;
-$sidedrawer-header-image-offset-top: 10;
-$sidedrawer-header-image-offset-bottom: 5;
-$sidedrawer-list-item-offset-left: 15;
-$sidedrawer-list-icon-offset: 10;
-$sidedrawer-list-icon-size: 20;
-
-.sidedrawer {
-    &.sidedrawer-left {
-        background-color: $ab-background;
-
-        .sidedrawer-header-image {
-            color: $background-dark;
-            height: $sidedrawer-header-image-size;
-            width: $sidedrawer-header-image-size;
-            font-size: $sidedrawer-header-image-size;
-            padding: 0;
-            margin-bottom: $sidedrawer-header-image-offset-bottom;
-            margin-top: $sidedrawer-header-image-offset-top;
-        }
-
-        .footnote {
-            color: rgba($ab-color, 0.5);
-        }
-    }
-
-    .sidedrawer-header {
-        background-color: $ab-background;
-
-        .sidedrawer-header-brand {
-            color: $ab-color;
-        }
-    }
-
-    .sidedrawer-content {
-        background-color: $side-drawer-background;
-
-        $sidedrawer-list-item-offset-left: 15;
-        $sidedrawer-list-icon-offset: 10;
-        $sidedrawer-list-icon-size: 20;
-
-        .sidedrawer-list-item {
-            padding-left: $sidedrawer-list-item-offset-left;
-            Label {
-                vertical-align: center;
-                color: $blue-dark;
-            }
-            .fa {
-                width: $sidedrawer-list-icon-size;
-                margin-right: $sidedrawer-list-icon-offset;
-            }
-            &.selected {
-                background-color: $item-active-background;
-                Label {
-                    color: $item-active-color;
-                }
-            }
-        }
-    }
-    .btn {
-        width: 80%;
-        font-size: 20;
-    }
-
+.btn-flat {
+  background: transparent;
+  border-color: transparent;
+  border-width: 1;
+  color: $primary;
 }
 
-
-.btn-success {
-    background-color: $success;
-    border-color: $success;
-    border-width: 1;
-    color: white;
- }
-
- .btn-danger {
-     background-color: $danger;
-     border-color: $danger;
-     border-width: 1;
-     color: white;
- }
-
- .btn-flat {
-     background-color: transparent;
-     border-color: transparent;
-    border-width: 1;
-    color: $primary;
- }
-
- .btn-success:disabled,
- .btn-danger:disabled {
-     background-color: #ccc;
-     color: #777;
-     border-color: #ccc;
- }
-
-
-
+/* .btn {
+  border-width: 1;
+  width: 100%;
+  padding: 5 10;
+  border-radius: 30%;
+  margin: 5 0;
+  border-color: #7c015d;
+} */
