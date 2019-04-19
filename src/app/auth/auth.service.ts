@@ -13,6 +13,7 @@ import {
 
 import { User } from './user.model';
 
+
 const FIREBASE_API_KEY = 'AIzaSyB6OvfualQIwAJHZHwL01Hk9W4cs8KVhfU';
 
 interface AuthResponseData {
@@ -30,7 +31,10 @@ export class AuthService {
   private _user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: number;
 
-  constructor(private http: HttpClient, private router: RouterExtensions) {}
+  constructor(
+      private http: HttpClient,
+      private router: RouterExtensions
+     ) {}
 
   get user() {
     return this._user.asObservable();

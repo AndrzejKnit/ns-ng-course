@@ -7,7 +7,7 @@ import { HttpClient } from "@angular/common/http";
 import { AuthService } from "../auth/auth.service";
 
 @Injectable({ providedIn: 'root' })
-export class ChallengeService {
+export class ChallengeService1 {
     private _currentChallenge = new BehaviorSubject<Challenge>(null);
 
     constructor(private http: HttpClient, private authService: AuthService) {
